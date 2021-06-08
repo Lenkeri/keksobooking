@@ -41,20 +41,15 @@ const CHECKIN = ['12:00', '13:00', '14:00']
 const mapOverlay = document.querySelector('.map__overlay');
 const map = document.querySelector('.map')
 map.classList.remove('map--faded')
-// const templatePin = document.querySelector('#pin').content.querySelector('.map__pin');
-const createPinElement = function(obj, temp){
-  const pin = temp.cloneNode(true);
-  // let pin
-  //  pin =  pinTemplate.content.cloneNode(true);
-  // console.log(pin, 2);
-  pin.img = `${obj.author.avatar}`
-  pin.alt= `${obj.offer.title}`
-  pin.style.left = `${obj.location.x + pin.width / 2}px`
-pin.style.top = `${location.y + pin.height}`;
-  console.log(pin, 565655654545)
-  console.log(pin.alt, 9999, pin.img)
-  // pin.style = `left: ${obj.location.x + pin.width / 2}px; top: ${location.y + pin.height}px;`
+const templatePin = document.querySelector('#pin').content.querySelector('.map__pin');
+const createPinElement = function(obj){
+  const pin = templatePin.cloneNode(true);
+  pin.children[0].src = `${obj.author.avatar}`
+    pin.style.left = `${obj.location.x + templatePin.style.width / 2}px`
+    pin.style.top = `${obj.location.y - templatePin.style.height}px`;
+    pin.children[0].alt= `${obj.offer.title}`
 
+mapPins.appendChild(pin)
 
 }
 
@@ -75,8 +70,7 @@ function getArrAd(num) {
     let author = template.author;
     let offer = template.offer;
     let location = template.location;
-    template.author.avatar = `img/avatars/user0${i}.png`
-    author.avatar = `img/avatars/user0${i}.png`;
+    author.avatar = `img/avatars/user0${i + 1}.png`;
 
     offer.title = TITLES[i];
     offer.address = `${location.x} ${location.y}`
@@ -101,14 +95,11 @@ function getArrAd(num) {
     location.x = random_integer(1, mapOverlay.clientWidth)
     location.y = random_integer(130, 630);
     arrAd.push(template)
-    // console.log()
-    // const element = createPinElement(template, getNewPin());
-    // mapPins.appendChild( createPinElement(template, getNewPin()));
-    // console.log(element, 'el')
-    createPinElement(template, getNewPin());
+    createPinElement(template);
+
 
   }
 }
   getArrAd(8)
-  console.log(arrAd)
+  // console.log(arrAd)
 
