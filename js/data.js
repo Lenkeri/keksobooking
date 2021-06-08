@@ -10,10 +10,14 @@ const TITLES = [
   'Уютное бунгало далеко от моря',
   'Неуютное бунгало по колено в воде',
 ];
-const PHOTOS = ["http://o0.github.io/assets/images/tokyo/hotel1.jpg", "http://o0.github.io/assets/images/tokyo/hotel2.jpg", "http://o0.github.io/assets/images/tokyo/hotel3.jpg"]
+const PHOTOS = [
+  "http://o0.github.io/assets/images/tokyo/hotel1.jpg",
+  "http://o0.github.io/assets/images/tokyo/hotel2.jpg",
+  "http://o0.github.io/assets/images/tokyo/hotel3.jpg"
+]
 const FEATURES = ["wifi", "dishwasher", "parking", "washer", "elevator", "conditioner"];
-const CHECKIN = ['12:00', '13:00', '14:00'];
-const TYPE_OFFER = ['palace', 'flat', 'house', 'bungalow'];
+const CHECKIN = ['12:00', '13:00', '14:00']
+const TYPE_OFFER = ['palace', 'flat', 'house', 'bungalow']
 
 function generateAd(i) {
   const x = random_integer(1, 1200);
@@ -30,7 +34,7 @@ function generateAd(i) {
       rooms: random_integer(1, 10),
       guests:  random_integer(1, 10),
       checkin: getRandomItem(CHECKIN),
-      checkout:getRandomItem(CHECKIN),
+      checkout: getRandomItem(CHECKIN),
       features: getArrRandomLength(FEATURES),
       description: TITLES[i],
       photos: getArrRandomLength(PHOTOS)

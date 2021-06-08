@@ -2,6 +2,7 @@ import {generateAds} from './data.js'
 
 const map = document.querySelector('.map')
 map.classList.remove('map--faded')
+
 const templatePin = document.querySelector('#pin').content.querySelector('.map__pin');
 const createPinElement = function(obj){
   const pin = templatePin.cloneNode(true);
@@ -12,16 +13,21 @@ const createPinElement = function(obj){
 
     return pin
 }
-const mapPins = document.querySelector('.map__pins')
+const mapPins = map.querySelector('.map__pins')
 
-const getPinsForMap = function(num){
-  const arr = generateAds(num)
-  for(let i = 0; i < num;i ++){
-  mapPins.appendChild(createPinElement(arr[i]))
+
+
+const getPinsForMap = function(array){
+  const fragment = document.createDocumentFragment();
+  for(let i = 0; i < array.length; i++){
+    fragment.appendChild(createPinElement(array[i]))
+
 
   }
+  mapPins.appendChild(fragment)
 }
 
-getPinsForMap(8)
+const arrPinsMap = generateAds(8)
+getPinsForMap(arrPinsMap)
 
 
