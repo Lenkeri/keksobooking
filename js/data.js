@@ -15,7 +15,7 @@ const PHOTOS = [
   "http://o0.github.io/assets/images/tokyo/hotel2.jpg",
   "http://o0.github.io/assets/images/tokyo/hotel3.jpg"
 ]
-const FEATURES = ["wifi", "dishwasher", "parking", "washer", "elevator", "conditioner"];
+export const FEATURES = ["wifi", "dishwasher", "parking", "washer", "elevator", "conditioner"];
 const CHECKIN = ['12:00', '13:00', '14:00']
 const TYPE_OFFER = ['palace', 'flat', 'house', 'bungalow']
 
@@ -28,7 +28,7 @@ function generateAd(i) {
     },
     offer: {
       title: TITLES[i],
-      address: `${x} ${location.y}`,
+      address: `${x} ${y}`,
       price: random_integer(2000, 50000),
       type: getRandomItem(TYPE_OFFER),
       rooms: random_integer(1, 10),
