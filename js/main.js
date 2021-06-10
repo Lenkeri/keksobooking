@@ -26,42 +26,13 @@ map.children[1].appendChild(fragment)
 }
 
 const getFeature = (arr, domEl) => {
-  // domEl.querySelector('.popup__feature--wifi').classList.add('hidden')
-  // domEl.querySelector('.popup__feature--dishwasher').classList.add('hidden')
-  // domEl.querySelector('.popup__feature--parking').classList.add('hidden')
-  // domEl.querySelector('.popup__feature--washer').classList.add('hidden')
-  // domEl.querySelector('.popup__feature--elevator').classList.add('hidden')
-  // domEl.querySelector('.popup__feature--conditioner').classList.add('hidden')
+  for(let i = 0 ;i < FEATURES.length; i++) {
+   domEl.querySelector(`.popup__feature--${FEATURES[i]}`).classList.add('hidden');
 
-  // for(let i = 0;i < arr.length; i++){
-  //   if (arr[i] == "wifi"){
+  }
 
-  //     domEl.querySelector('.popup__feature--wifi').classList.remove('hidden')
-  //     console.log(arr)
-  //   } else if (arr[i] == "dishwasher"){
-  //     domEl.querySelector('.popup__feature--dishwasher').classList.remove('hidden')
-
-  //   } else if (arr[i] == "parking"){
-  //     domEl.querySelector('.popup__feature--parking').classList.remove('hidden')
-
-  //   } else if (arr[i] == "washer"){
-  //     domEl.querySelector('.popup__feature--washer').classList.remove('hidden')
-
-  //   } else if (arr[i] == "elevator"){
-  //     domEl.querySelector('.popup__feature--elevator').classList.remove('hidden')
-
-  //   } else if (arr[i] == "conditioner"){
-  //     domEl.querySelector('.popup__feature--conditioner').classList.remove('hidden')
-
-  //   }
-  // }
-  // console.log(`.popup__feature--${FEATURES[1]}`, 9999999)
-
-  for(let i = 0 ; i < FEATURES; i++) {
-    console.log(`.popup__feature--${FEATURES[i]}`, 9999999)
-   domEl.querySelector(`.popup__feature--${FEATURES[i]}`).classList.add('hidden')
-   if (arr[i] == FEATURES[0] || arr[i] == FEATURES[1] || arr[i] == FEATURES[2] || arr[i] == FEATURES[3] || arr[i] == FEATURES[4] || arr[i] == FEATURES[5]){
-    console.log(`.popup__feature--${arr[i]}`, 888888888);
+  for(let i = 0 ; i < 6; i++) {
+   if (arr[i] == FEATURES[0] || arr[i] == FEATURES[1] || arr[i] == FEATURES[2] || arr[i] == FEATURES[3] || arr[i] == FEATURES[4] || arr[i] == FEATURES[5] ){
       domEl.querySelector(`.popup__feature--${arr[i]}`).classList.remove('hidden')
       console.log(arr)
     }
