@@ -18,7 +18,6 @@ const activate = function () {
 
 
 mapPinMain.addEventListener('mousedown', function (evt) {
-
   activate()
 
 })
