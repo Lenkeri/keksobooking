@@ -1,6 +1,7 @@
 const form = document.querySelector('.ad-form');
 const addrInput = form.querySelector('#address');
-const pinMap = document.querySelector('.map__pin--main')
+const pinMap = document.querySelector('.map__pin--main');
+const numberRoom = form.querySelector('.room-number');
 export function getDisableForm () {
   const arr = form.querySelectorAll('fieldset')
   form.classList.add('ad-form--disabled')
