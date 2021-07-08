@@ -16,7 +16,6 @@ const activate = function () {
   getUndisableForm()
 }
 
-
 mapPinMain.addEventListener('mousedown', function (evt) {
   activate()
 
