@@ -29,20 +29,4 @@ mapPinMain.addEventListener('keydown', function(evt) {
   }
 });
 
-// let ARR = [1,0, 0, 0, 0, 0]
-
-// function get(){
-// for(let i = 0;i <= 5 ;i++){
-//   if(i == 1) {
-//     ARR[i] = ARR[i - 1] + 1;
-//   } else{
-//     ARR[i] = ARR[i - 1] + ARR[i - 2];
-
-//   }
-
-// }
-// return ARR
-// }
-// console.log(get());
-
 
