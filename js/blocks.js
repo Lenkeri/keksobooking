@@ -1,21 +1,49 @@
 import {generateAds, FEATURES} from './data.js'
 import {map, mapPins, templatePin, templatePopup} from './main.js'
-const createPinElement = function(obj){
+
+
+
+const createPinElement = function(obj) {
   const pin = templatePin.cloneNode(true);
   pin.children[0].src = `${obj.author.avatar}`
   pin.style.left = `${obj.location.x + templatePin.style.width / 2}px`
   pin.style.top = `${obj.location.y - templatePin.style.height}px`;
+  pin.dataset.index = "adf";
   pin.children[0].alt= `${obj.offer.title}`
 
-    return pin
+  pin.addEventListener('click', function () {
+    showPopupElem(obj)
+  })
+
+  return pin
 }
 
-export const showPopupElem = function(){
-  const elem = generatePopup(arrPinsMap[0]);
-  const fragment = document.createDocumentFragment();
-  fragment.appendChild(elem)
-  map.insertBefore(fragment, map.querySelector('.map__filters-container'))
-  // appendChild(fragment)
+export const showPopupElem = function(obj){
+  deletePopupElement();
+  const elem = generatePopup(obj);
+  map.insertBefore(elem, map.querySelector('.map__filters-container'))
+  const popupClose = elem.querySelector('.popup__close');
+
+  popupClose.addEventListener('click', function(evt) {
+    deletePopupElement()
+  })
+
+  document.addEventListener('keydown', onDocumentKeydown)
+}
+
+const onDocumentKeydown = (evt) => {
+  if (evt.code === 'Escape') {
+    deletePopupElement();
+  }
+}
+
+const deletePopupElement = () => {
+  const prevCard = map.querySelector('.popup');
+  if (prevCard) {
+    prevCard.remove()
+    document.removeEventListener('keydown', onDocumentKeydown)
+  }
+
 }
 
 const getFeature = (arr, domEl) => {
@@ -29,7 +57,6 @@ const getFeature = (arr, domEl) => {
   }
 
 }
-
 
 const getPhotos = (arr, domEl) => {
   if (arr.length == 0){
@@ -61,14 +88,12 @@ export const generatePopup = (obj) => {
    return popup
 }
 
-
 export const getPinsForMap = function(array){
   const fragment = document.createDocumentFragment();
   for(let i = 0; i < array.length; i++){
     fragment.appendChild(createPinElement(array[i]));
   }
   mapPins.appendChild(fragment)
-
 }
 
 export const arrPinsMap = generateAds(8)
