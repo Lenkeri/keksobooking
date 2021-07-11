@@ -31,11 +31,23 @@ export const showPopupElem = function(obj){
   document.addEventListener('keydown', onDocumentKeydown)
 }
 
+let pinsPopupNum = 0;
+
+
 const onDocumentKeydown = (evt) => {
   if (evt.code === 'Escape') {
     deletePopupElement();
   }
+  if (evt.code ==='Enter'){
+    if(pinsPopupNum === arrPinsMap.length){
+      pinsPopupNum = 0
+    }
+    showPopupElem(arrPinsMap[pinsPopupNum])
+    pinsPopupNum++
+  }
 }
+
+document.addEventListener('keydown', onDocumentKeydown)
 
 const deletePopupElement = () => {
   const prevCard = map.querySelector('.popup');
@@ -45,6 +57,8 @@ const deletePopupElement = () => {
   }
 
 }
+
+
 
 const getFeature = (arr, domEl) => {
   for(let i = 0 ;i < FEATURES.length; i++) {
