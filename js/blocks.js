@@ -1,6 +1,7 @@
 import {generateAds, FEATURES} from './data.js'
 import {map, mapPins, templatePin, templatePopup} from './main.js'
-
+const  mapPinMain = document.querySelector('.map__pin--main');
+const address = document.querySelector('#address')
 
 
 const createPinElement = function(obj) {
@@ -111,3 +112,29 @@ export const getPinsForMap = function(array){
 }
 
 export const arrPinsMap = generateAds(8)
+
+
+mapPinMain.addEventListener('mousedown', function(evt) {
+  window.mapPinMain = mapPinMain;
+  const startX = evt.clientX;
+  const startY = evt.clientY;
+  const pinX = mapPinMain.offsetLeft;
+  const pinY = mapPinMain.offsetTop;
+  const onDocumentMouseMove = (evtMousemove) => {
+    const shiftX = evtMousemove.clientX - startX;
+    const shiftY = evtMousemove.clientY - startY;
+    address.value = pinX + ' ' + pinY;
+
+    mapPinMain.style.left = pinX + shiftX + 'px';
+    mapPinMain.style.top = pinY + shiftY + 'px';
+    address.value = `${pinX + shiftX + mapPinMain.clientWidth / 2}   ${pinY + shiftY + mapPinMain.clientHeight}`;
+  };
+
+  const onDocumentMouseup = () => {
+    document.removeEventListener('mousemove', onDocumentMouseMove);
+    document.removeEventListener('mouseup', onDocumentMouseup);
+  }
+
+  document.addEventListener('mousemove', onDocumentMouseMove);
+  document.addEventListener('mouseup', onDocumentMouseup);
+});
