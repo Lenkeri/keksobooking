@@ -123,11 +123,19 @@ mapPinMain.addEventListener('mousedown', function(evt) {
   const onDocumentMouseMove = (evtMousemove) => {
     const shiftX = evtMousemove.clientX - startX;
     const shiftY = evtMousemove.clientY - startY;
-    address.value = pinX + ' ' + pinY;
+    let nextX = pinX + shiftX;
+    let nextY =  pinY + shiftY;
+    if(nextY <= 130) {
+      nextY = 130;
+    } else if(nextY >= 630) {
+      nextY = 630;
+    }
+    console.log(nextY);
 
-    mapPinMain.style.left = pinX + shiftX + 'px';
-    mapPinMain.style.top = pinY + shiftY + 'px';
-    address.value = `${pinX + shiftX + mapPinMain.clientWidth / 2}   ${pinY + shiftY + mapPinMain.clientHeight}`;
+    mapPinMain.style.left = nextX + 'px';
+    mapPinMain.style.top = nextY + 'px';
+    address.value = `${nextX + mapPinMain.clientWidth / 2}   ${nextY + mapPinMain.clientHeight}`;
+
   };
 
   const onDocumentMouseup = () => {
