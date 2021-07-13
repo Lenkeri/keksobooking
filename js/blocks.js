@@ -112,6 +112,10 @@ mapPinMain.addEventListener('mousedown', function(evt) {
       nextY = 130;
     } else if(nextY >= 630) {
       nextY = 630;
+    } else if( nextX <= 0) {
+      nextX = 0
+    } else if (nextX >= map.clientWidth) {
+      nextX = map.clientWidth
     }
 
     mapPinMain.style.left = nextX -  mapPinMain.clientWidth / 2 + 'px';
