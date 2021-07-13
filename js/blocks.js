@@ -108,11 +108,15 @@ mapPinMain.addEventListener('mousedown', function(evt) {
     let nextX = pinX + shiftX ;
     let nextY =  pinY + shiftY;
 
-    if(nextY <= 130) {
+
+
+    if (nextY <= 130) {
       nextY = 130;
-    } else if(nextY >= 630) {
+    } else if (nextY >= 630) {
       nextY = 630;
-    } else if( nextX <= 0) {
+    }
+
+    if ( nextX <= 0) {
       nextX = 0
     } else if (nextX >= map.clientWidth) {
       nextX = map.clientWidth
