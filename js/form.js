@@ -8,7 +8,12 @@ const guest = form.querySelector('#capacity');
 const formTitle = form.querySelector('#title');
 const timeIn = form.querySelector('#timein');
 const timeOut = form.querySelector('#timeout');
+const address = form.querySelector('#address')
 
+
+export function getAddress(val) {
+  address.value = val
+}
 
 export function getDisableForm () {
   const arr = form.querySelectorAll('fieldset')
@@ -30,7 +35,6 @@ export const getUndisableForm = function () {
   let pinY = coordinatePin.bottom;
   addrInput.value = Math.ceil(pinX) + ' ' + Math.ceil(pinY);
   getRequiredField()
-
 }
 
 formRoom.addEventListener('input', function () {
@@ -59,7 +63,6 @@ timeOut.addEventListener('input', function () {
 const getRequiredField = () => {
   checkPriceCapacity()
   checkTitleCapacity()
-
 }
 
 const roomCapacity = {
@@ -74,7 +77,6 @@ const guestCapacity = {
   '2':[2, 3],
   '3':[3],
   '0':[100]
-
 }
 
 const priceCapacity = {

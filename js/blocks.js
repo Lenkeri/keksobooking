@@ -1,8 +1,7 @@
 import {generateAds, FEATURES} from './data.js'
-import {map, mapPins, templatePin, templatePopup} from './main.js'
+import {map, mapPins, templatePin, templatePopup, activate} from './main.js'
 const  mapPinMain = document.querySelector('.map__pin--main');
-const address = document.querySelector('#address')
-
+import{getAddress} from "./form.js"
 
 const createPinElement = function(obj) {
   const pin = templatePin.cloneNode(true);
@@ -15,7 +14,6 @@ const createPinElement = function(obj) {
   pin.addEventListener('click', function () {
     showPopupElem(obj)
   })
-
   return pin
 }
 
@@ -32,23 +30,12 @@ export const showPopupElem = function(obj){
   document.addEventListener('keydown', onDocumentKeydown)
 }
 
-let pinsPopupNum = 0;
-
-
 const onDocumentKeydown = (evt) => {
   if (evt.code === 'Escape') {
     deletePopupElement();
   }
-  if (evt.code ==='Enter'){
-    if(pinsPopupNum === arrPinsMap.length){
-      pinsPopupNum = 0
-    }
-    showPopupElem(arrPinsMap[pinsPopupNum])
-    pinsPopupNum++
-  }
-}
 
-document.addEventListener('keydown', onDocumentKeydown)
+}
 
 const deletePopupElement = () => {
   const prevCard = map.querySelector('.popup');
@@ -59,8 +46,6 @@ const deletePopupElement = () => {
 
 }
 
-
-
 const getFeature = (arr, domEl) => {
   for(let i = 0 ;i < FEATURES.length; i++) {
    domEl.querySelector(`.popup__feature--${FEATURES[i]}`).classList.add('hidden');
@@ -70,7 +55,6 @@ const getFeature = (arr, domEl) => {
       domEl.querySelector(`.popup__feature--${arr[i]}`).classList.remove('hidden')
     }
   }
-
 }
 
 const getPhotos = (arr, domEl) => {
@@ -113,28 +97,26 @@ export const getPinsForMap = function(array){
 
 export const arrPinsMap = generateAds(8)
 
-
 mapPinMain.addEventListener('mousedown', function(evt) {
-  window.mapPinMain = mapPinMain;
   const startX = evt.clientX;
   const startY = evt.clientY;
-  const pinX = mapPinMain.offsetLeft;
-  const pinY = mapPinMain.offsetTop;
+  const pinX = mapPinMain.offsetLeft +  mapPinMain.clientWidth / 2;
+  const pinY = mapPinMain.offsetTop + mapPinMain.clientHeight;
   const onDocumentMouseMove = (evtMousemove) => {
     const shiftX = evtMousemove.clientX - startX;
     const shiftY = evtMousemove.clientY - startY;
-    let nextX = pinX + shiftX;
+    let nextX = pinX + shiftX ;
     let nextY =  pinY + shiftY;
+
     if(nextY <= 130) {
       nextY = 130;
     } else if(nextY >= 630) {
       nextY = 630;
     }
-    console.log(nextY);
 
-    mapPinMain.style.left = nextX + 'px';
-    mapPinMain.style.top = nextY + 'px';
-    address.value = `${nextX + mapPinMain.clientWidth / 2}   ${nextY + mapPinMain.clientHeight}`;
+    mapPinMain.style.left = nextX -  mapPinMain.clientWidth / 2 + 'px';
+    mapPinMain.style.top = nextY - mapPinMain.clientHeight + 'px';
+    getAddress(`${Math.ceil(nextX)}, ${nextY}`)
 
   };
 
@@ -145,4 +127,16 @@ mapPinMain.addEventListener('mousedown', function(evt) {
 
   document.addEventListener('mousemove', onDocumentMouseMove);
   document.addEventListener('mouseup', onDocumentMouseup);
+});
+
+
+
+mapPinMain.addEventListener('mousedown', function (evt) {
+  activate()
+})
+
+mapPinMain.addEventListener('keydown', function(evt) {
+  if (evt.code === "Enter") {
+   activate()
+  }
 });

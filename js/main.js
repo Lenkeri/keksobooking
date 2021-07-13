@@ -6,30 +6,27 @@ export const map = document.querySelector('.map')
 export const mapPins = map.querySelector('.map__pins')
 export const templatePin = document.querySelector('#pin').content.querySelector('.map__pin');
 export const templatePopup = document.getElementById('card').content.querySelector('.popup');
-const  mapPinMain = document.querySelector('.map__pin--main');
-
 // mapPins.addEventListener('click', function(evt) {
 //   console.log(evt.target.closest('.map__pin').dataset.index)
 // })
 
-getDisableForm()
-
-const activate = function () {
-  map.classList.remove('map--faded')
-  getPinsForMap(arrPinsMap)
-  getUndisableForm()
+export const activate = function () {
+  if(isActive()){
+    map.classList.remove('map--faded')
+    getPinsForMap(arrPinsMap)
+    getUndisableForm()
+  }
 }
 
-mapPinMain.addEventListener('mousedown', function (evt) {
-  activate()
-})
+const isActive = function () {
 
-mapPinMain.addEventListener('keydown', function(evt) {
-  if (evt.code === "Enter" /*&& !setupUserName.activeElement*/) {
-   activate()
+  if (map.classList.contains('map--faded')){
+    return true
   }
-});
+return false
+}
 
 
+getDisableForm()
 
 
