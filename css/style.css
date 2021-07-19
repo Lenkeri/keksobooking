@@ -1246,3 +1246,29 @@ fieldset {
 .hidden {
   display: none;
 }
+
+/* новые данные во время работы над проектом */
+
+.error-list {
+position: absolute;
+background-color: rgba(0,94,111, 50%) ;
+min-width: 200px;
+width: 60%;
+height: 80px;
+margin-top: 90px;
+left: 20%;
+/* margin-left: 10%; */
+right: 20%;
+text-align: center;
+box-shadow: 7px 7px 0 3px rgba(16, 14, 44, 0.5)
+/* vertical-align: bottom; */
+
+/* justify-content: center; */
+}
+.content-err {
+  color: white;
+text-align: center;
+padding: auto;
+
+/* vertical-align: middle; */
+}
