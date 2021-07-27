@@ -13,7 +13,7 @@ const errorText = errorList.querySelector('.content-err');
 // })
 
 export const activate = function () {
-  if(isActive()){
+  if (isActive()) {
     map.classList.remove('map--faded')
     getData(onSuccess, onError)
     getUndisableForm()
@@ -21,10 +21,7 @@ export const activate = function () {
 }
 
 const isActive = function () {
-  if (map.classList.contains('map--faded')){
-    return true
-  }
-return false
+  return map.classList.contains('map--faded');
 }
 
 getDisableForm()
