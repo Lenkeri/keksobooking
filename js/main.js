@@ -36,7 +36,6 @@ const onSuccess = function(data) {
 }
 
 const onError = function(error) {
-errorList.classList.remove('.visually-hidden')
+  errorList.classList.remove('visually-hidden')
   errorText.textContent = ` Ошибка ${error}`;
-
 }
