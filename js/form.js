@@ -8,7 +8,9 @@ const guest = form.querySelector('#capacity');
 const formTitle = form.querySelector('#title');
 const timeIn = form.querySelector('#timein');
 const timeOut = form.querySelector('#timeout');
-const address = form.querySelector('#address')
+const address = form.querySelector('#address');
+const buttFormSubmit = form.querySelector('.ad-form__submit')
+
 
 
 export function getAddress(val) {
@@ -135,5 +137,18 @@ const  checkInCapacity = () =>{
 const  checkOutCapacity = () =>{
   timeIn.value = timeOut.value
 }
+
+const onLoadSuccess = function (data) {
+
+}
+const onLoadError = function (data) {
+
+}
+
+buttFormSubmit.addEventListener('click', function (evt) {
+  evt.preventDefault()
+  const dataForm = new FormData(form)
+  loadData(dataForm, )
+})
 
 
