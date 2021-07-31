@@ -1,3 +1,4 @@
+import {loadData} from './server.js'
 const form = document.querySelector('.ad-form');
 const addrInput = form.querySelector('#address');
 const pinMap = document.querySelector('.map__pin--main');
@@ -17,7 +18,17 @@ export function getAddress(val) {
   address.value = val
 }
 
-export function getDisableForm () {
+const clearForm = () => {
+for(let i = 0;i <  form.children.length; i++){
+  let element = form[i]
+  console.log(element);
+  // debugger
+  // element.reset()
+}
+// form.reset()
+}
+
+export function blockForm () {
   const arr = form.querySelectorAll('fieldset')
   form.classList.add('ad-form--disabled')
   for(let i = 0; i < arr.length; i++){
@@ -139,16 +150,22 @@ const  checkOutCapacity = () =>{
 }
 
 const onLoadSuccess = function (data) {
+  console.log(data + " success")
+  // blockForm()
+  clearForm()
 
 }
+
 const onLoadError = function (data) {
+  console.log(data + " error")
 
 }
 
 buttFormSubmit.addEventListener('click', function (evt) {
+  getRequiredField()
   evt.preventDefault()
   const dataForm = new FormData(form)
-  loadData(dataForm, )
+  loadData(dataForm, onLoadSuccess(), onLoadError())
 })
 
 

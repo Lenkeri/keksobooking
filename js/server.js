@@ -13,4 +13,12 @@ export const getData = function(onSuccess, onError){
 }
 
 
+export const loadData = function(data, onSuccess, onError){
+  fetch('https://21.javascript.pages.academy/keksobooking.', {
+   method: 'POST',
+   body: data,
+  }).then(onSuccess).catch(onError)
+
+
+ }
 

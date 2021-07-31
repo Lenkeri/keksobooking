@@ -1257,18 +1257,13 @@ width: 60%;
 height: 80px;
 margin-top: 90px;
 left: 20%;
-/* margin-left: 10%; */
 right: 20%;
 text-align: center;
-box-shadow: 7px 7px 0 3px rgba(16, 14, 44, 0.5)
-/* vertical-align: bottom; */
-
-/* justify-content: center; */
+box-shadow: 0px 3px 6px 6px rgba(6, 31, 36, 0.5)
 }
 .content-err {
   color: white;
 text-align: center;
 padding: auto;
 
-/* vertical-align: middle; */
 }
