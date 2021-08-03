@@ -1,4 +1,5 @@
 import {loadData} from './server.js'
+import {messageSuccess, messageError} from './messages.js'
 const form = document.querySelector('.ad-form');
 const addrInput = form.querySelector('#address');
 const pinMap = document.querySelector('.map__pin--main');
@@ -20,9 +21,10 @@ export function getAddress(val) {
 
 const clearForm = () => {
 for(let i = 0;i <  form.children.length; i++){
-  let element = form[i]
-  console.log(element);
-  // debugger
+  // let element = form[i].querySelector('div')
+  // console.log(element);
+  // console.log( form.children.length);
+  // element.value = ""
   // element.reset()
 }
 // form.reset()
@@ -149,20 +151,30 @@ const  checkOutCapacity = () =>{
   timeIn.value = timeOut.value
 }
 
-const onLoadSuccess = function (data) {
-  console.log(data + " success")
-  // blockForm()
+const onLoadSuccess = function (res) {
+  console.log(res + " success")
+  onLoadError(res)
+  if (res.status == 200) {
+    console.log(res.status);
+  blockForm()
   clearForm()
+  // messageSuccess()
+  } else {
+    onLoadError(res)
+  }
+
 
 }
 
-const onLoadError = function (data) {
-  console.log(data + " error")
+const onLoadError = function (res) {
+  console.log(res + " error")
+  messageError()
 
 }
 
 buttFormSubmit.addEventListener('click', function (evt) {
   getRequiredField()
+
   evt.preventDefault()
   const dataForm = new FormData(form)
   loadData(dataForm, onLoadSuccess(), onLoadError())
