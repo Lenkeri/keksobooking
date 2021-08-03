@@ -18,8 +18,10 @@ export const messageSuccess = () => {
 }
 export const messageError = () => {
   getTmpledElem(error, main)
+
   document.addEventListener('click', function () {
-    errorElem.parentNode.removeChild(errorElem)
+    // errorElem.parentNode.removeChild(errorElem)
+    errorElem.classList.add("hidden")
   })
 
 }

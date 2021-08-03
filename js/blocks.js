@@ -7,8 +7,8 @@ const  mapPinMain = document.querySelector('.map__pin--main');
 const createPinElement = function(obj) {
   const pin = templatePin.cloneNode(true);
   pin.children[0].src = `${obj.author.avatar}`
-  pin.style.left = `${obj.location.x + templatePin.style.width / 2}px`
-  pin.style.top = `${obj.location.y - templatePin.style.height}px`;
+  pin.style.left = `${obj.location.lat + templatePin.style.width / 2}px`
+  pin.style.top = `${obj.location.lng - templatePin.style.height}px`;
   pin.dataset.index = "adf";
   pin.children[0].alt= `${obj.offer.title}`
 
