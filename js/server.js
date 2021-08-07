@@ -1,5 +1,5 @@
 export const getData = function(onSuccess, onError){
-  const promise = fetch('https://21.javascript.pages.academy/keksobooking/data');
+  const promise = fetch('https://keksobooking.deno.dev');
   promise
   .then((res) => {
     if (res.ok) {
@@ -10,11 +10,12 @@ export const getData = function(onSuccess, onError){
   })
   .then(onSuccess)
   .catch(onError)
+
 }
 
 
 export const loadData = function(data, onSuccess, onError){
-  fetch('https://21.javascript.pages.academy/keksobooking.', {
+  fetch('https://keksobooking.deno.dev', {
    method: 'POST',
    body: data,
   }).then(onSuccess).catch(onError)
