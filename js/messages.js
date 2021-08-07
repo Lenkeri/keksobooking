@@ -21,7 +21,7 @@ export const messageError = () => {
 
   document.addEventListener('click', function () {
     // errorElem.parentNode.removeChild(errorElem)
-    errorElem.classList.add("hidden")
+    // errorElem.classList.add("hidden")
   })
 
 }

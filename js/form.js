@@ -154,14 +154,14 @@ const  checkOutCapacity = () =>{
 const onLoadSuccess = function (res) {
   console.log(res + " success")
   onLoadError(res)
-  if (res.status == 200) {
-    console.log(res.status);
-  blockForm()
-  clearForm()
+  // if (res.status == 200) {
+  //   console.log(res.status);
+  // blockForm()
+  // clearForm()
   // messageSuccess()
-  } else {
-    onLoadError(res)
-  }
+  // } else {
+    // onLoadError(res)
+  // }
 
 
 }

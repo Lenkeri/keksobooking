@@ -15,7 +15,7 @@ export const templatePopup = document.getElementById('card').content.querySelect
 export const activate = function () {
   if (isActive()) {
     map.classList.remove('map--faded')
-    getData(onSuccess, onError)
+    // getData(onSuccess, onError)
     getUndisableForm()
   }
 }

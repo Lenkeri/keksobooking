@@ -17,6 +17,7 @@ export const getData = function(onSuccess, onError){
 export const loadData = function(data, onSuccess, onError){
   fetch('https://keksobooking.deno.dev', {
    method: 'POST',
+   mode: 'no-cors',
    body: data,
   }).then(onSuccess).catch(onError)
 
